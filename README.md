@@ -1,3 +1,5 @@
+This is a fork of the [color_quant](https://crates.io/crates/color_quant) crate. The git repository is located at https://github.com/image-rs/color_quant.
+
 # Color quantization library
 This library provides a color quantizer based on the [NEUQUANT](https://scientificgems.wordpress.com/stuff/neuquant-fast-high-quality-image-quantization/)
 quantization algorithm by Anthony Dekker.
