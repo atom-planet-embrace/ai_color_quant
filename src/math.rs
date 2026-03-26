@@ -1,5 +1,5 @@
 //! These implementations are based on `num-traits`' [`FloatCore`].
-//! They have been adapted to the particular needs of `color_quant` and refined
+//! They have been adapted to the particular needs of `ai_color_quant` and refined
 //! through [feedback].
 //!
 //! [`FloatCore`]: https://docs.rs/num-traits/0.2.19/num_traits/float/trait.FloatCore.html

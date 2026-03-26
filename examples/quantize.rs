@@ -1,8 +1,8 @@
 #![feature(array_chunks)]
 
-extern crate color_quant;
+extern crate ai_color_quant;
 
-use color_quant::NeuQuant;
+use ai_color_quant::NeuQuant;
 use std::fs::write;
 
 fn main() {

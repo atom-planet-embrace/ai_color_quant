@@ -1,11 +1,11 @@
 [package]
-name = "color_quant"
+name = "ai_color_quant"
 license = "MIT"
 version = "1.1.0"
 authors = ["nwin <nwin@users.noreply.github.com>"]
 readme = "README.md"
-description = "Color quantization library to reduce n colors to 256 colors."
-repository = "https://github.com/image-rs/color_quant.git"
+description = "A no_std fork of color_quant"
+repository = "https://github.com/atom-planet-embrace/ai_color_quant.git"
 
 [features]
 std = []
