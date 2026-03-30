@@ -1,38 +1,36 @@
 name: Rust CI
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rust: ["1.36.0", stable, beta, nightly]
-        command: [build, test]
+        rust: [stable, beta, nightly]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - run: rustup default ${{ matrix.rust }}
     - name: build
-      run: >
-        cargo build --verbose
+      run: cargo build --verbose
     - name: test
-      if: ${{ matrix.rust != '1.36.0' }}
-      run: >
-        cargo test --tests --benches
-      # TODO: add criterion benchmarks?
+      run: cargo test --features std --tests --benches
+  no_std:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: rustup default stable
+    - run: rustup target add thumbv7m-none-eabi
+    - name: no_std build
+      run: cargo build --target thumbv7m-none-eabi --no-default-features
+    - name: check default features
+      run: cargo check
   rustfmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
-        components: rustfmt
+    - uses: actions/checkout@v4
+    - run: rustup default stable && rustup component add rustfmt
     - name: Run rustfmt check
-      uses: actions-rs/cargo@v1
-      with:
-        command: fmt
-        args: -- --check
+      run: cargo fmt -- --check
